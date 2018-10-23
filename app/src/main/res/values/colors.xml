@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+<resources>
+    <color name="colorPrimary">#ff272727</color>
+    <color name="colorPrimaryDark">#00838f</color>
+    <color name="colorAccent">#00acc1</color>
+
+    <color name="colorSettingsTint">#e0f7fa</color>
+    <color name="colorAccentSettings">@color/photonBlue50</color>
+
+    <color name="colorGradientStart">#417bd6</color>
+    <color name="colorGradientCenter">#0a6f9b</color>
+    <color name="colorGradientEnd">#099ca3</color>
+
+    <color name="colorProgressGradientStart">#00b8d4</color>
+    <color name="colorProgressGradientEnd">#00e5ff</color>
+
+    <color name="colorInactiveGradientStart">#343e46</color>
+    <color name="colorInactiveGradientCenter">#343e46</color>
+    <color name="colorInactiveGradientEnd">#343e46</color>
+
+    <color name="colorActiveGradientStart">#1c3342</color>
+    <color name="colorActiveGradientCenter">#1c374d</color>
+    <color name="colorActiveGradientEnd">#1c4437</color>
+
+    <color name="colorErase">@color/photonTeal70</color>
+    <color name="colorErasePressed">@color/photonTeal80</color>
+
+    <color name="colorMultitasking">@color/photonTeal70</color>
+    <color name="colorMultitaskingPressed">@color/photonTeal80</color>
+
+    <color name="colorSheetSessionBackground">#fff9f9fa</color>
+    <color name="colorSheetSessionBackgroundPressed">#ffededf0</color>
+
+    <color name="colorDotHighlight">@color/photonBlue40</color>
+
+    <color name="colorMenuBackground">#414141</color>
+    <color name="colorMenuBackgroundDark">#272727</color>
+
+    <color name="colorCursor">#ccffffff</color>
+
+    <color name="colorOverlay">#cc000000</color>
+
+    <color name="colorTextInactive">#80FFFFFF</color>
+    <color name="urlBarHintText">#bbc5c4</color>
+
+    <color name="snackbarBackground">#FF414146</color>
+    <color name="snackbarTextColor">#ffffffff</color>
+    <color name="snackbarActionText">@color/photonBlue50</color>
+
+    <color name="searchSuggestionsBackground">@color/photonTeal90</color>
+
+    <color name="searchSuggestionPromptBackground">@color/photonTeal90</color>
+    <color name="searchSuggestionPromptTitleColor">@color/photonGrey10</color>
+    <color name="searchSuggestionPromptSubtitleColor">#9e9fad</color>
+    <color name="searchSuggestionPromptBorderColor">#345148</color>
+    <color name="searchSuggestionPromptButtonTextColor">@color/photonTeal60</color>
+
+    <color name="searchHintTextColor">#ffffffff</color>
+    <color name="searchHintBackgroundColor">@color/photonTeal80</color>
+    <color name="urlBarInactiveBackgroundColor">#480f261f</color>
+
+    <color name="onboarding_indicator_default">#7FFFFFFF</color>
+    <color name="onboarding_indicator_selected">#FFFFFFFF</color>
+
+    <color name="dialogAccent">@color/photonTeal60</color>
+
+    <color name="colorSession">@color/photonTeal90</color>
+    <color name="colorActiveSession">#353852</color>
+    <color name="colorAction">@color/photonBlue50</color>
+
+    <color name="add_to_homescreen_text">#b3ffffff</color>
+    <color name="add_to_homescreen_icon_background">#004b74</color>
+
+    <color name="firefoxInstallHint">@color/photonTeal60</color>
+
+    <color name="preference_row_selected">#353852</color>
+    <color name="preference_row_disabled">#B3313131</color>
+
+    <color name="scrollbarThumb">#b2b2b2b2</color>
+
+    <color name="doorhanger_link">#FF2AA1FE</color>
+    <color name="placeholder_active_grey">#222222</color>
+
+    <color name="contextMenuTitleTextColor">#99F9F9FA</color>
+    <color name="contextMenuSeparatorBackground">#1AF9F9FA</color>
+
+    <!-- Browser Menu items color palette -->
+    <color name="browser_menu_bg">@color/photonTeal90</color>
+    <color name="browser_menu_blocking_switch_bg">#1Af9f9fa</color>
+    <color name="browser_menu_trackers_blocked_label">@android:color/white</color>
+    <color name="browser_menu_request_desktop_separator">#1Af9f9fa</color>
+    <color name="browser_menu_trackers_blocked_subtitle">@color/photonGrey10</color>
+
+    <color name="images_removal_warning_background_color">#353852</color>
+
+    <!-- Add to Home screen dialog color palette -->
+    <color name="home_screen_dialog_bg">@color/photonTeal90</color>
+    <color name="home_screen_dialog_button_text">@color/photonTeal70</color>
+    <color name="home_screen_dialog_bg_tint">@color/photonTeal70</color>
+    <color name="home_screen_dialog_text">@color/photonGrey10</color>
+
+    <color name="home_screen_dialog_warning_bg">#353852</color>
+    <color name="home_screen_dialog_warning_text">#96f9f9fa</color>
+    
+    <color name="settings_summary_text">#ffbbbcc5</color>
+</resources>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/menu_blocking_switch_container_height"
+    android:background="@color/browser_menu_blocking_switch_bg"
+    android:paddingStart="12dp"
+    android:paddingEnd="0dp">
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/no_js_switch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_min="230dp">
+
+        <TextView
+            android:id="@+id/tracking_protection_toggle_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/menu_blocking_switch_margin"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:text="@string/menu_js_sources_blocked_title"
+            android:textColor="@color/browser_menu_trackers_blocked_label"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tracking_protection_toggle_title"
+            android:layout_marginStart="@dimen/menu_blocking_switch_margin"
+            android:alpha="0.6"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:text="@string/menu_js_sources_blocked_subtitle"
+            android:textColor="@color/browser_menu_trackers_blocked_label"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <Switch
+        android:id="@+id/no_js_switch"
+        android:layout_width="@dimen/menu_blocking_switch_width"
+        android:layout_height="@dimen/menu_blocking_switch_height"
+        android:layout_marginEnd="@dimen/menu_blocking_switch_margin"
+        android:background="?android:attr/selectableItemBackground"
+        android:checked="true"
+        android:clickable="true"
+        android:contentDescription="@string/content_description_js_blocking_switch"
+        android:ellipsize="end"
+        android:lines="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
