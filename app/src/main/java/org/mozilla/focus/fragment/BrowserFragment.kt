@@ -114,7 +114,6 @@ class BrowserFragment : WebFragment(), LifecycleObserver, View.OnClickListener,
 
     //Declare tab View here
 
-    private var tabView: ImageButton? = null
     private var statusBar: View? = null
     private var urlBar: View? = null
     private var popupTint: FrameLayout? = null
@@ -374,10 +373,6 @@ class BrowserFragment : WebFragment(), LifecycleObserver, View.OnClickListener,
         menuView!!.setOnClickListener(this)
 
 
-        //Set click listener here for multi tabbing
-        tabView = view.findViewById<View>(R.id.tabView) as ImageButton
-        tabView!!.setOnClickListener(this)
-
 
 
         if (session!!.isCustomTab) {
@@ -396,7 +391,9 @@ class BrowserFragment : WebFragment(), LifecycleObserver, View.OnClickListener,
 
     private fun initialiseNormalBrowserUi(view: View) {
         val eraseButton = view.findViewById<FloatingEraseButton>(R.id.erase)
-        eraseButton.setOnClickListener(this)
+
+        //Dismiss Erase tab view
+        //eraseButton.setOnClickListener(this)
 
         urlView!!.setOnClickListener(this)
 
@@ -503,8 +500,6 @@ class BrowserFragment : WebFragment(), LifecycleObserver, View.OnClickListener,
         menuView!!.setImageDrawable(menuIcon)
 
 
-        val tabIcon =  DrawableUtils.loadAndTintDrawable(requireContext(), R.drawable.ic_tab_new, textColor)
-        tabView!!.setImageDrawable(tabIcon)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -1003,18 +998,6 @@ class BrowserFragment : WebFragment(), LifecycleObserver, View.OnClickListener,
                 menuWeakReference = WeakReference(menu)
             }
 
-            R.id.tabView -> {
-
-                SessionManager.getInstance().selectSession(SessionManager.getInstance()
-                        .createNewTabSession(Source.MENU, "https://search.stampy.app/q.php?q=", context))
-                TelemetryWrapper.openLinkInNewTabEvent()
-                PreferenceManager.getDefaultSharedPreferences(context).edit()
-                        .putBoolean(
-                                context!!.getString(R.string.has_opened_new_tab),
-                                true
-                        ).apply()
-
-            }
 
 
 

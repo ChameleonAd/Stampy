@@ -27,6 +27,7 @@ public class LocalizedContent {
     // a custom scheme.
     public static final String URL_ABOUT = "focus:about";
     public static final String URL_RIGHTS = "focus:rights";
+    public static final String URL_HOME = "stampy:newtab";
 
     public static boolean handleInternalContent(String url, IWebView webView, Context context) {
         if (URL_ABOUT.equals(url)) {
@@ -35,8 +36,10 @@ public class LocalizedContent {
         } else if (URL_RIGHTS.equals(url)) {
             loadRights(webView, context);
             return true;
+        } else if (URL_HOME.equals(url)) {
+            loadHome(webView, context);
+            return true;
         }
-
         return false;
     }
 
@@ -84,11 +87,11 @@ public class LocalizedContent {
         final Map<String, String> substitutionMap = new ArrayMap<>();
 
         final String appName = context.getResources().getString(R.string.app_name);
-        final String mplUrl = "https://www.mozilla.org/en-US/MPL/";
-        final String trademarkPolicyUrl = "https://www.mozilla.org/foundation/trademarks/policy/";
+        final String mplUrl = "https://www.stampy.app";
+        final String trademarkPolicyUrl = "https://www.stampy.app/privacy.html";
         final String gplUrl = "gpl.html";
-        final String trackingProtectionUrl = "https://wiki.mozilla.org/Security/Tracking_protection#Lists";
-        final String licensesUrl = "licenses.html";
+        final String trackingProtectionUrl = "https://www.stampy.app";
+        final String licensesUrl = "https://www.stampy.app/privacy.html";
 
         final String content1 = resources.getString(R.string.your_rights_content1, appName);
         substitutionMap.put("%your-rights-content1%", content1);
@@ -110,6 +113,26 @@ public class LocalizedContent {
         final String data = HtmlLoader.loadResourceFile(context, R.raw.rights, substitutionMap);
         webView.loadData("file:///android_asset/rights.html", data, "text/html", "UTF-8", URL_RIGHTS);
     }
+
+
+    /**
+     * Load the content for focus:rights
+     */
+    private static void loadHome(@NonNull final IWebView webView, Context context) {
+        webView.loadData("file:///android_asset/newtab.html", HtmlLoader.loadResourceFile(context, R.raw.newtab, null) , "text/html", "UTF-8", URL_HOME);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
     private static void putLayoutDirectionIntoMap(Map<String, String> substitutionMap, Context context) {
         final int layoutDirection = context.getResources().getConfiguration().getLayoutDirection();

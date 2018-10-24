@@ -33,6 +33,10 @@ class SessionsAdapter/* package */ internal constructor(private val fragment: Se
                 fragment,
                 inflater.inflate(EraseViewHolder.LAYOUT_ID, parent, false)
             )
+            AddNewTabViewHolder.LAYOUT_ID -> AddNewTabViewHolder(
+                    fragment,
+                    inflater.inflate(AddNewTabViewHolder.LAYOUT_ID, parent, false)
+            )
             SessionViewHolder.LAYOUT_ID -> SessionViewHolder(
                 fragment,
                 inflater.inflate(SessionViewHolder.LAYOUT_ID, parent, false) as TextView
@@ -44,6 +48,7 @@ class SessionsAdapter/* package */ internal constructor(private val fragment: Se
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder.itemViewType) {
             EraseViewHolder.LAYOUT_ID -> { /* Nothing to do */ }
+            AddNewTabViewHolder.LAYOUT_ID -> { /*Nothing to do*/}
             SessionViewHolder.LAYOUT_ID -> (holder as SessionViewHolder).bind(sessions!![position])
             else -> throw IllegalStateException("Unknown viewType")
         }
@@ -52,17 +57,24 @@ class SessionsAdapter/* package */ internal constructor(private val fragment: Se
     override fun getItemViewType(position: Int): Int {
         return if (isErasePosition(position)) {
             EraseViewHolder.LAYOUT_ID
-        } else {
+        } else if (isNewTabPosition(position)) {
+            AddNewTabViewHolder.LAYOUT_ID
+        }    else
             SessionViewHolder.LAYOUT_ID
         }
-    }
+
 
     private fun isErasePosition(position: Int): Boolean {
+        return position == sessions!!.size +1
+    }
+
+    private fun isNewTabPosition(position: Int): Boolean {
         return position == sessions!!.size
     }
 
+
     override fun getItemCount(): Int {
-        return sessions!!.size + 1
+        return sessions!!.size + 2
     }
 
     override fun onChanged(sessions: List<Session>?) {

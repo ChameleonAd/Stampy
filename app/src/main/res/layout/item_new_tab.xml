@@ -3,17 +3,18 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="56dp"
-    android:background="@drawable/background_list_item_current_session"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/photonTeal60"
+    android:foreground="@drawable/foreground_list_item_erase"
     android:drawablePadding="16dp"
-    android:ellipsize="end"
     android:gravity="start|center_vertical"
-    android:lines="1"
     android:paddingEnd="16dp"
     android:paddingStart="16dp"
-    android:textColor="@android:color/white"
-    android:textSize="14sp"
-    tools:text="www.stampy.app"
-    android:drawableEnd="@drawable/ic_close"/>
+    android:lines="1"
+    android:ellipsize="end"
+    tools:drawableStart="@drawable/ic_tab_new"
+    android:text="@string/tabs_tray_action_new"
+    android:textColor="#ffffff"
+    android:textSize="14sp" />

@@ -66,7 +66,7 @@ public class FloatingSessionsButton extends FloatingActionButton {
         final FloatingActionButtonBehavior behavior = (FloatingActionButtonBehavior) params.getBehavior();
 
 
-        //Chenge this from 2 to 1 to give priority to erase function again
+        //Change this from 2 to 1 to give priority to erase function again
         final boolean shouldBeVisible = tabCount >= 1;
 
         if (behavior != null) {
