@@ -1005,19 +1005,8 @@ class BrowserFragment : WebFragment(), LifecycleObserver, View.OnClickListener,
 
             R.id.tabView -> {
 
-                SessionManager.getInstance()
-                        .createNewTabSession(Source.MENU, "Search Here", context).also { session ->
-                            if (!Settings.getInstance(context!!).shouldOpenNewTabs()) {
-                                // Show Snackbar to allow users to switch to tab they just opened
-                                val snackbar = ViewUtils.getBrandedSnackbar(
-                                        (context as Activity).findViewById(android.R.id.content),
-                                        R.string.new_tab_opened_snackbar)
-                                snackbar.setAction(R.string.open_new_tab_snackbar) {
-                                    SessionManager.getInstance().selectSession(session)
-                                }
-                                snackbar.show()
-                            }
-                        }
+                SessionManager.getInstance().selectSession(SessionManager.getInstance()
+                        .createNewTabSession(Source.MENU, "Search Here", context))
                 TelemetryWrapper.openLinkInNewTabEvent()
                 PreferenceManager.getDefaultSharedPreferences(context).edit()
                         .putBoolean(
