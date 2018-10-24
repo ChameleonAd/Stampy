@@ -1006,7 +1006,7 @@ class BrowserFragment : WebFragment(), LifecycleObserver, View.OnClickListener,
             R.id.tabView -> {
 
                 SessionManager.getInstance().selectSession(SessionManager.getInstance()
-                        .createNewTabSession(Source.MENU, "Search Here", context))
+                        .createNewTabSession(Source.MENU, "https://www.google.com", context))
                 TelemetryWrapper.openLinkInNewTabEvent()
                 PreferenceManager.getDefaultSharedPreferences(context).edit()
                         .putBoolean(
