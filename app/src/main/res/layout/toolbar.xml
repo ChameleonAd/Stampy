@@ -71,6 +71,25 @@
         android:layout_marginTop="4dp"
         android:layout_marginEnd="4dp">
 
+
+        <ImageButton
+            android:id="@+id/tabView"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_vertical"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/content_description_menu"
+            android:src="@drawable/ic_tab_new" />
+
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp">
+
         <ImageButton
             android:id="@+id/menuView"
             android:layout_width="48dp"

@@ -119,10 +119,18 @@
                     android:src="@drawable/ic_stop"
                     android:visibility="gone" />
 
+                <org.mozilla.focus.widget.tabNewMenuButton
+                    android:id="@+id/tabView"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/indicator_content_description_menu"
+                    android:visibility="gone" />
+
                 <org.mozilla.focus.widget.IndicatorMenuButton
                     android:id="@+id/menuView"
                     android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_height="match_parent"
                     android:background="?android:attr/selectableItemBackgroundBorderless"
                     android:contentDescription="@string/indicator_content_description_menu"
                     android:visibility="gone" />

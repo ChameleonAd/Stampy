@@ -50,12 +50,12 @@ android {
     // We have a three dimensional build configuration:
     // BUILD TYPE (debug, release) X PRODUCT FLAVOR (focus, klar) X ARCHITECTURE (x86, arm, aarch64)
     buildTypes {
-        release {
+       /* release {
             minifyEnabled false
             shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.test
-        }
+        }*/
         debug {
             applicationIdSuffix ".browser"
             minifyEnabled false
@@ -65,13 +65,6 @@ android {
         }
         nightly {
             initWith release
-        }
-        store{
-            minifyEnabled false
-            shrinkResources false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            debuggable false
-            signingConfig signingConfigs.test
         }
     }
     testOptions {
@@ -88,16 +81,7 @@ android {
             minSdkVersion 21
             applicationId 'app.stampy'
             targetSdkVersion 28
-            versionCode 6
-            versionName '1.0'
-        }
-        stampy {
-            dimension "product"
-            applicationIdSuffix ".browser"
-            minSdkVersion 21
-            applicationId 'org.mozilla'
-            targetSdkVersion 28
-            versionCode 1
+           // versionCode 6
             versionName '1.0'
         }
         klar {
@@ -107,31 +91,27 @@ android {
             applicationId 'org.mozilla'
             targetSdkVersion 28
             versionCode 11
-            versionName '8.0'
         }
         x86 {
             dimension "abi"
             minSdkVersion 21
-            applicationId 'org.mozilla'
             targetSdkVersion 28
-            versionCode 11
-            versionName '8.0'
+            versionCode 9
         }
-        arm {
-            dimension "abi"
-            minSdkVersion 21
-            applicationId 'org.mozilla'
-            targetSdkVersion 28
-            versionCode 11
-            versionName '8.0'
-        }
+
         aarch64 {
             dimension "abi"
             minSdkVersion 21
-            applicationId 'org.mozilla'
             targetSdkVersion 28
-            versionCode 11
+            versionCode 8
             versionName '8.0'
+        }
+
+        arm {
+            dimension "abi"
+            minSdkVersion 21
+            targetSdkVersion 28
+            versionCode 7
         }
     }
     sourceSets {
@@ -153,10 +133,6 @@ android {
         klarArmRelease.root = 'src/klarRelease'
         klarAarch64Release.root = 'src/klarRelease'
 
-        stampyX86Release.root = 'src/focusRelease'
-        stampyArmRelease.root = 'src/focusRelease'
-        stampyAarch64Release.root = 'src/focusRelease'
-
         // Debug
         focusX86Debug.root = 'src/focusDebug'
         focusArmDebug.root = 'src/focusDebug'
@@ -165,10 +141,6 @@ android {
         klarX86Debug.root = 'src/klarDebug'
         klarArmDebug.root = 'src/klarDebug'
         klarAarch64Debug.root = 'src/klarDebug'
-
-        stampyX86Debug.root = 'src/focusDebug'
-        stampyArmDebug.root = 'src/focusDebug'
-        stampyAarch64Debug.root = 'src/focusDebug'
 
         // Nightly
         focusX86Nightly.root = 'src/focusNightly'
@@ -253,8 +225,6 @@ dependencies {
     focusImplementation 'com.adjust.sdk:adjust-android:4.11.4'
     focusImplementation 'com.android.installreferrer:installreferrer:1.0'
 
-    stampyImplementation 'com.adjust.sdk:adjust-android:4.11.4'
-    stampyImplementation 'com.android.installreferrer:installreferrer:1.0'
 
     // Required by Adjust
     armImplementation "org.mozilla:geckoview-release-armeabi-v7a:${geckoview_version}"
@@ -433,12 +403,14 @@ def getEnabledLocales() {
     } .collect {
         return it.substring("values-".length())
     } .collect {
+
         if (it.length() > 3 && it.contains("-r")) {
             // Android resource dirs add an "r" prefix to the region - we need to strip that for java usage
             // Add 1 to have the index of the r, without the dash
             def regionPrefixPosition = it.indexOf("-r") + 1
 
             return it.substring(0, regionPrefixPosition) + it.substring(regionPrefixPosition + 1)
+
         } else {
             return it
         }

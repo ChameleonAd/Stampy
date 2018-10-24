@@ -108,28 +108,7 @@ open class MainActivity : LocaleAwareAppCompatActivity() {
             }
         })
 
-        //Create TAB Switcher
-        /*
-        val context = this.applicationContext
-        val tabSwitcher = TabSwitcher(context)
-        tabSwitcher.setBackground(ContextCompat.getColor(context, R.color.background_floating_material_dark))
-        tabSwitcher.layoutPolicy = LayoutPolicy.AUTO
-        tabSwitcher.setTabIcon(R.drawable.ic_close)
-        tabSwitcher.setTabIconTint(ContextCompat.getColor(context, android.R.color.black))
-        tabSwitcher.setTabBackgroundColor(ContextCompat.getColor(context, R.color.background_material_dark))
-        tabSwitcher.tabContentBackgroundColor = ContextCompat.getColor(context, R.color.phone_tab_content_background_color_dark)
-        tabSwitcher.setTabTitleTextColor(ContextCompat.getColor(context, R.color.browser_actions_title_color))
-        tabSwitcher.setTabCloseButtonIcon(R.drawable.ic_close)
-        tabSwitcher.setTabCloseButtonIcon(ContextCompat.getColor(context, android.R.color.black))
-        tabSwitcher.setToolbarTitle("TAB Switch Title")
-        tabSwitcher.inflateToolbarMenu(R.menu.menu_browser_context, null)
-        tabSwitcher.setToolbarNavigationIcon(R.drawable.abc_btn_default_mtrl_shape, null)
-        tabSwitcher.setToolbarNavigationIconTint(ContextCompat.getColor(context, android.R.color.black))
 
-
-        //Setting custom Decorator
-        tabSwitcher.decorator = Decorator()
-        */
     }
 
     private fun registerSessionObserver() {

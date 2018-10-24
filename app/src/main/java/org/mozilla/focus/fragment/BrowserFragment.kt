@@ -5,6 +5,7 @@
 package org.mozilla.focus.fragment
 
 import android.Manifest
+import android.app.Activity
 import android.app.DownloadManager
 import android.app.PendingIntent
 import android.arch.lifecycle.LifecycleObserver
@@ -110,6 +111,10 @@ class BrowserFragment : WebFragment(), LifecycleObserver, View.OnClickListener,
     private var blockView: FrameLayout? = null
     private var securityView: ImageView? = null
     private var menuView: ImageButton? = null
+
+    //Declare tab View here
+
+    private var tabView: ImageButton? = null
     private var statusBar: View? = null
     private var urlBar: View? = null
     private var popupTint: FrameLayout? = null
@@ -368,6 +373,13 @@ class BrowserFragment : WebFragment(), LifecycleObserver, View.OnClickListener,
         menuView = view.findViewById<View>(R.id.menuView) as ImageButton
         menuView!!.setOnClickListener(this)
 
+
+        //Set click listener here for multi tabbing
+        tabView = view.findViewById<View>(R.id.tabView) as ImageButton
+        tabView!!.setOnClickListener(this)
+
+
+
         if (session!!.isCustomTab) {
             initialiseCustomTabUi(view)
         } else {
@@ -489,6 +501,10 @@ class BrowserFragment : WebFragment(), LifecycleObserver, View.OnClickListener,
 
         val menuIcon = DrawableUtils.loadAndTintDrawable(requireContext(), R.drawable.ic_menu, textColor)
         menuView!!.setImageDrawable(menuIcon)
+
+
+        val tabIcon =  DrawableUtils.loadAndTintDrawable(requireContext(), R.drawable.ic_tab_new, textColor)
+        tabView!!.setImageDrawable(tabIcon)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -987,6 +1003,31 @@ class BrowserFragment : WebFragment(), LifecycleObserver, View.OnClickListener,
                 menuWeakReference = WeakReference(menu)
             }
 
+            R.id.tabView -> {
+
+                SessionManager.getInstance()
+                        .createNewTabSession(Source.MENU, "Search Here", context).also { session ->
+                            if (!Settings.getInstance(context!!).shouldOpenNewTabs()) {
+                                // Show Snackbar to allow users to switch to tab they just opened
+                                val snackbar = ViewUtils.getBrandedSnackbar(
+                                        (context as Activity).findViewById(android.R.id.content),
+                                        R.string.new_tab_opened_snackbar)
+                                snackbar.setAction(R.string.open_new_tab_snackbar) {
+                                    SessionManager.getInstance().selectSession(session)
+                                }
+                                snackbar.show()
+                            }
+                        }
+                TelemetryWrapper.openLinkInNewTabEvent()
+                PreferenceManager.getDefaultSharedPreferences(context).edit()
+                        .putBoolean(
+                                context!!.getString(R.string.has_opened_new_tab),
+                                true
+                        ).apply()
+
+            }
+
+
 
             R.id.display_url -> if (SessionManager.getInstance().hasSessionWithUUID(session!!.uuid)) {
                 val urlFragment = UrlInputFragment
@@ -1023,7 +1064,6 @@ class BrowserFragment : WebFragment(), LifecycleObserver, View.OnClickListener,
 
 
             R.id.back_menu -> {
-                println("BUTTON PRESSSED!!!!!!!!!")
                 goBack()
             }
 
