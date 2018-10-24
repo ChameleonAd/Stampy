@@ -34,7 +34,9 @@ public class FloatingEraseButton extends FloatingActionButton {
         final FloatingActionButtonBehavior behavior = (FloatingActionButtonBehavior) params.getBehavior();
         AccessibilityManager accessibilityManager = (AccessibilityManager) getContext().getSystemService(Context.ACCESSIBILITY_SERVICE);
 
-        keepHidden = tabCount != 1;
+
+        //Changed this from 0 to 1 to make it visible again :)
+        keepHidden = tabCount != 0;
 
         if (behavior != null) {
             if (accessibilityManager != null && accessibilityManager.isTouchExplorationEnabled()) {

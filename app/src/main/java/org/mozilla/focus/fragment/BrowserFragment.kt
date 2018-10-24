@@ -1006,7 +1006,7 @@ class BrowserFragment : WebFragment(), LifecycleObserver, View.OnClickListener,
             R.id.tabView -> {
 
                 SessionManager.getInstance().selectSession(SessionManager.getInstance()
-                        .createNewTabSession(Source.MENU, "https://search.stampy.app/q.php?q=''", context))
+                        .createNewTabSession(Source.MENU, "https://search.stampy.app/q.php?q=", context))
                 TelemetryWrapper.openLinkInNewTabEvent()
                 PreferenceManager.getDefaultSharedPreferences(context).edit()
                         .putBoolean(

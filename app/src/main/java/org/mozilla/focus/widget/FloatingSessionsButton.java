@@ -65,7 +65,9 @@ public class FloatingSessionsButton extends FloatingActionButton {
         final CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) getLayoutParams();
         final FloatingActionButtonBehavior behavior = (FloatingActionButtonBehavior) params.getBehavior();
 
-        final boolean shouldBeVisible = tabCount >= 2;
+
+        //Chenge this from 2 to 1 to give priority to erase function again
+        final boolean shouldBeVisible = tabCount >= 1;
 
         if (behavior != null) {
             behavior.setEnabled(shouldBeVisible);
