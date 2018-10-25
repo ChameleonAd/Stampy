@@ -119,7 +119,7 @@ public class LocalizedContent {
      * Load the content for focus:rights
      */
     private static void loadHome(@NonNull final IWebView webView, Context context) {
-        webView.loadData("file:///android_asset/newtab.html", HtmlLoader.loadResourceFile(context, R.raw.newtab, null) , "text/html", "UTF-8", URL_HOME);
+        webView.loadData("file:///android_asset/tab.html", HtmlLoader.loadResourceFile(context, R.raw.tab, null) , "text/html", "UTF-8", URL_HOME);
     }
 
 

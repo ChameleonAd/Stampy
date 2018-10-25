@@ -76,25 +76,26 @@ class SessionViewHolder internal constructor(
 
     override fun onTouch(v: View, event: MotionEvent): Boolean {
         Log.d("", "onTouch entered");
-        if (event.action == MotionEvent.ACTION_DOWN) {
+        if (event.action == MotionEvent.ACTION_UP) {
             Log.d("", "ACTION_DOWN");
             v.performClick()
             val session = sessionReference.get()
 
             if(session==null) {
-                return false
+                return true
             }
 
 
-            if (event.rawX >= (textView.getRight() - textView.compoundDrawablesRelative[2].bounds.width())*1.2 ) {
+            //Add a fuzziness factor for error margin (actually we are adding a Hardcoded Delta of 1.35, so 35% less margin)
+            if (event.rawX >= (textView.getRight() - textView.compoundDrawablesRelative[2].bounds.width())*1.35 ) {
                 SessionManager.getInstance().removeRegularSession(session.uuid)
                 TelemetryWrapper.switchTabInTabsTrayEvent()
             } else {
                 selectSession(session)
             }
-            return true
+            //return true
         }
-        return false
+        return true
     }
 
 
