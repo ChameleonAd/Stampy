@@ -256,6 +256,8 @@ class UrlInputFragment :
         }
         keyboardLinearLayout.homeViewTipsLabel.alpha = 1f
         keyboardLinearLayout.homeViewTipsLabel.setOnClickListener(null)
+        //Set menuIndicator to transaparent on home Run
+        menuView.visibility = View.GONE
     }
 
     private fun adjustViewToStatusBarHeight(statusBarHeight: Int) {

@@ -1,39 +1,148 @@
-body, html {
-    background: #221F1F;
-    color: #FFFFFF;
-    font-family: sans-serif;
-    line-height: 24px;
-    font-size: 14px;
+body {
+height:100%
+  overflow: hidden;
+  background: #0a6f9b;
+}
+#Logo {
+  width: 30%;
+  heigFht: 30%;
+  position: absolute;
+  top: 0;
+  right: -25%;
+  bottom: 0;
+  left: -25%;
+  margin: auto;
+  display: block;
+  stroke-miterlimit: 5;
+}
+#LightBlue {
+  stroke: #0097A7;
+  stroke-width: 1.1;
+  stroke-dasharray: 810;
+  stroke-dashoffset: 810;
+  fill-opacity: 0;
+  stroke-opacity: 0;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  animation-iteration: 1;
+  animation-name: FadeStroke, FillIn;
+  animation-duration: 1s, 1s;
+  animation-delay: 5.4s, 2.27s;
+}
+#LightestBones {
+  stroke: #E0F7FA;
+  stroke-width: 1.1;
+  stroke-dasharray: 810;
+  stroke-dashoffset: 810;
+  fill-opacity: 0;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  animation-iteration: 1;
+  animation-name: FadeStroke, FillIn;
+  animation-duration: 1s, 1s;
+  animation-delay: 5.4s, 2.27s;
+}
+#DarkestBlue {
+  stroke: #006064;
+  stroke-width: 1.1;
+  stroke-dasharray: 810;
+  stroke-dashoffset: 810;
+  fill-opacity: 0;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  animation-iteration: 1;
+  animation-name: FadeStroke, FillIn;
+  animation-duration: 1s, 1s;
+  animation-delay: 5.4s, 2.27s;
+}
+#DarkBlue {
+  stroke: #00838F;
+  stroke-width: 1.1;
+  stroke-dasharray: 810;
+  stroke-dashoffset: 810;
+  fill-opacity: 0;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  animation-iteration: 1;
+  animation-name: FadeStroke, FillIn;
+  animation-duration: 1s, 1s;
+  animation-delay: 5.4s, 2.27s;
+}
+#Back {
+  stroke: #E0F7FA;
+  stroke-width: 5.7;
+  stroke-dasharray: 700;
+  stroke-dashoffset: 810;
+  fill-opacity: 0;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  animation-iteration: 1;
+  animation-name: DrawLine, FadeStroke;
+  animation-duration: 3.2s, 1s;
+  animation-delay: 0s, 2.4s;
+}
+/*
+@keyframes offset {
+  100% {
+    stroke-dashoffset: 0;
+  }
 }
 
-body{
-    padding-left: 24px;
-    padding-right: 24px;
-    margin-left: 0px;
-    margin-right: 0px;
+@keyframes fill-it-lightBlue {
+  0%{
+    fill: #ffffff;
+  }
+  100% {
+    fill: #0097A7;
+  }
 }
 
-a {
-    color: #0A9AF4;
+@keyframes fill-it-darkestBlue {
+    0%{
+    fill: #ffffff;
+  }
+  100% {
+    fill: #006064;
+  }
 }
 
-/* Make only about page links ("learn more") white */
-.about a {
-    color: #FFFFFF;
+@keyframes fill-it-darkBlue {
+    0%{
+    fill: #ffffff;
+  }
+  100% {
+    fill: #00838F;
+  }
 }
 
-p.subtitle {
-    text-align: center;
-    opacity: .7;
-    margin: 0;
-}
 
-img#wordmark {
-    /* We need to set the dp size here, because by default webview assumes the image is not
-       density specific (but since it's an android resource, we get a density specific version). */
-    width: 180px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 24px;
+@keyframes fill-it-lightestBones {
+    0%{
+    fill: #ffffff;
+  }
+  100% {
+    fill: #E0F7FA;
+  }
+}
+*/
+@keyframes DrawLine {
+  to {
+    stroke-dashOffset: 0;
+  }
+  to {
+    stroke-dashArray: 701;
+  }
+}
+@keyframes FadeStroke {
+  to {
+    stroke-opacity: 0;
+  }
+}
+@keyframes FillIn {
+  from {
+    fill-opacity: 0;
+  }
+  to {
+    fill-opacity: 0.87;
+  }
 }
