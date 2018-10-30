@@ -96,14 +96,14 @@ android {
             dimension "abi"
             minSdkVersion 21
             targetSdkVersion 28
-            versionCode 9
+            versionCode 12
         }
 
         aarch64 {
             dimension "abi"
             minSdkVersion 21
             targetSdkVersion 28
-            versionCode 8
+            versionCode 11
             versionName '8.0'
         }
 
@@ -111,7 +111,7 @@ android {
             dimension "abi"
             minSdkVersion 21
             targetSdkVersion 28
-            versionCode 7
+            versionCode 10
         }
     }
     sourceSets {

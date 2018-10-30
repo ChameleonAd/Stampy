@@ -75,9 +75,7 @@ class SessionViewHolder internal constructor(
 
 
     override fun onTouch(v: View, event: MotionEvent): Boolean {
-        Log.d("", "onTouch entered");
         if (event.action == MotionEvent.ACTION_UP) {
-            Log.d("", "ACTION_DOWN");
             v.performClick()
             val session = sessionReference.get()
 
@@ -85,9 +83,22 @@ class SessionViewHolder internal constructor(
                 return true
             }
 
+            val l = IntArray(2)
+            textView.getLocationOnScreen(l)
+            val w = textView.width
 
-            //Add a fuzziness factor for error margin (actually we are adding a Hardcoded Delta of 1.35, so 35% less margin)
-            if (event.rawX >= (textView.getRight() - textView.compoundDrawablesRelative[2].bounds.width())*1.35 ) {
+            //Add a fuzziness factor for error margin (actually we are adding a Hardcoded Delta of 1.2, so 20% margin)
+
+            /*
+          Log.d("", "Printing ic_close left layout bounds: "+(textView.compoundDrawablesRelative[2].bounds.width() + textView.paddingEnd)
+                  + ", printing left of square " + l[0].toString()
+                  + ", printing  width of text drawer " + w.toString()
+          + "\n TOTAL X-POS: " + (l[0] + w - (textView.compoundDrawablesRelative[2].bounds.width() + textView.paddingEnd)).toString())
+            */
+
+            //Complete left bound is computed relative to its parent and it consist of icon bounds plus parent's ending padding, after
+            //which any X is considered in the fuzzy area
+            if (event.rawX >= l[0] + w - (textView.compoundDrawablesRelative[2].bounds.width() + textView.paddingEnd)*1.2) {
                 SessionManager.getInstance().removeRegularSession(session.uuid)
                 TelemetryWrapper.switchTabInTabsTrayEvent()
             } else {
@@ -107,5 +118,17 @@ class SessionViewHolder internal constructor(
                 TelemetryWrapper.switchTabInTabsTrayEvent()
             }
         })
+    }
+
+
+    private fun isViewContains(view: View, rx: Int): Boolean {
+        val l = IntArray(2)
+        view.getLocationOnScreen(l)
+        val x = l[0]
+        val w = view.width
+
+        return if (rx < x || rx > x + w ) {
+            false
+        } else true
     }
 }
